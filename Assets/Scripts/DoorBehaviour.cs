@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class DoorBehaviour : MonoBehaviour {
 
-	RaycastHit hit;
+	public RaycastHit hit;
 	public GameObject camera;
-	Animator anim;
+	public Animator anim;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,13 +20,11 @@ public class DoorBehaviour : MonoBehaviour {
 		Debug.DrawRay(camera.transform.position, camera.transform.forward * 2, Color.green, 1f);
 
 		if (hit.transform.tag == "Door") {
-			anim = hit.transform.GetComponent<Animator>();
+			anim = hit.collider.GetComponentInParent<Animator>();
 
-
-
-			anim.SetBool("isOpen", true);
-
-
+			if (Input.GetKeyDown(KeyCode.E)) {
+				anim.SetBool("Open", !anim.GetBool("Open"));
+			}
 		}
 	}
 }
