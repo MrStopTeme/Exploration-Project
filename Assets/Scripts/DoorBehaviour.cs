@@ -16,8 +16,8 @@ public class DoorBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Physics.Raycast(camera.transform.position, camera.transform.forward * 1.5f, out hit, 2f);
-		Debug.DrawRay(camera.transform.position, camera.transform.forward * 1.5f, Color.green, 1f);
+		Physics.Raycast(camera.transform.position, camera.transform.forward * 1.5f, out hit, 1.5f);
+		Debug.DrawRay(camera.transform.position, camera.transform.forward * 1.5f, Color.green);
 
 		if (hit.transform.tag == "Door") {
 			anim = hit.collider.GetComponentInParent<Animator>();
